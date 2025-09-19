@@ -78,11 +78,11 @@ export function DashboardLayout({ children, currentPage, onPageChange, onLogout 
       {/* Mobile sidebar */}
       <div className={cn("fixed inset-0 z-50 lg:hidden", sidebarOpen ? "block" : "hidden")}>
         <div className="fixed inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
-        <div className="fixed left-0 top-0 h-full w-64 bg-sidebar border-r border-sidebar-border">
+        <div className="fixed left-0 top-0 h-full w-72 sm:w-80 bg-sidebar border-r border-sidebar-border">
           <div className="flex h-16 items-center justify-between px-4">
-            <h1 className="text-lg font-bold text-sidebar-foreground">Smart Dustbin Monitor</h1>
+            <h1 className="text-base sm:text-lg font-bold text-sidebar-foreground">Smart Dustbin Monitor</h1>
             <Button variant="ghost" size="sm" onClick={() => setSidebarOpen(false)}>
-              <X className="h-4 w-4" />
+              <X className="h-5 w-5" />
             </Button>
           </div>
           <nav className="mt-8 px-4">
@@ -95,13 +95,13 @@ export function DashboardLayout({ children, currentPage, onPageChange, onLogout 
                       setSidebarOpen(false)
                     }}
                     className={cn(
-                      "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-left",
+                      "flex w-full items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-colors text-left",
                       currentPage === item.href
                         ? "bg-sidebar-primary text-sidebar-primary-foreground"
                         : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
                     )}
                   >
-                    <item.icon className="h-4 w-4" />
+                    <item.icon className="h-5 w-5" />
                     {item.name}
                   </button>
                 </li>
@@ -147,28 +147,31 @@ export function DashboardLayout({ children, currentPage, onPageChange, onLogout 
       {/* Main content */}
       <div className="lg:pl-64">
         {/* Top bar */}
-        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-border bg-background px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-2 sm:gap-x-4 border-b border-border bg-background px-3 sm:px-4 shadow-sm lg:px-8">
           <Button variant="ghost" size="sm" className="lg:hidden" onClick={() => setSidebarOpen(true)}>
             <Menu className="h-5 w-5" />
           </Button>
 
-          <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
+          <div className="flex flex-1 gap-x-2 sm:gap-x-4 self-stretch lg:gap-x-6">
             <div className="flex flex-1 items-center">
-              <h2 className="text-xl font-semibold text-foreground">Municipal Waste Management Dashboard</h2>
+              <h2 className="text-sm sm:text-lg lg:text-xl font-semibold text-foreground leading-tight">
+                <span className="hidden sm:inline">Municipal Waste Management Dashboard</span>
+                <span className="sm:hidden">Waste Dashboard</span>
+              </h2>
             </div>
-            <div className="flex items-center gap-x-4 lg:gap-x-6">
+            <div className="flex items-center gap-x-2 sm:gap-x-4 lg:gap-x-6">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm" className="relative">
-                    <Bell className="h-5 w-5" />
+                    <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
                     {notifications.length > 0 && (
-                      <Badge className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs bg-red-500">
+                      <Badge className="absolute -top-1 -right-1 h-4 w-4 sm:h-5 sm:w-5 rounded-full p-0 text-xs bg-red-500">
                         {notifications.length}
                       </Badge>
                     )}
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-80">
+                <DropdownMenuContent align="end" className="w-72 sm:w-80">
                   <DropdownMenuLabel>Notifications</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   {notifications.map((notification) => (
@@ -193,7 +196,7 @@ export function DashboardLayout({ children, currentPage, onPageChange, onLogout 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm">
-                    <User className="h-5 w-5" />
+                    <User className="h-4 w-4 sm:h-5 sm:w-5" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -219,8 +222,8 @@ export function DashboardLayout({ children, currentPage, onPageChange, onLogout 
         </div>
 
         {/* Page content */}
-        <main className="py-6">
-          <div className="px-4 sm:px-6 lg:px-8">{children}</div>
+        <main className="py-4 sm:py-6">
+          <div className="px-3 sm:px-4 lg:px-8">{children}</div>
         </main>
       </div>
     </div>

@@ -34,30 +34,32 @@ export function LoginPage({ onLogin }: LoginPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <div className="bg-primary rounded-full p-3">
-              <Trash2 className="h-8 w-8 text-white" />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center p-3 sm:p-4">
+      <div className="w-full max-w-sm sm:max-w-md">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="flex items-center justify-center mb-3 sm:mb-4">
+            <div className="bg-primary rounded-full p-2 sm:p-3">
+              <Trash2 className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">Smart Dustbin</h1>
-          <p className="text-gray-600 mt-2">Municipal Waste Management System</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Smart Dustbin</h1>
+          <p className="text-sm sm:text-base text-gray-600 mt-2">Municipal Waste Management System</p>
         </div>
 
         <Card className="shadow-xl border-0">
-          <CardHeader className="text-center">
-            <CardTitle className="flex items-center justify-center gap-2">
-              <Shield className="h-5 w-5 text-primary" />
+          <CardHeader className="text-center pb-4 sm:pb-6">
+            <CardTitle className="flex items-center justify-center gap-2 text-lg sm:text-xl">
+              <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
               Admin Login
             </CardTitle>
-            <CardDescription>Enter your credentials to access the dashboard</CardDescription>
+            <CardDescription className="text-sm">Enter your credentials to access the dashboard</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="px-4 sm:px-6">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
+                <Label htmlFor="email" className="text-sm">
+                  Email Address
+                </Label>
                 <Input
                   id="email"
                   type="email"
@@ -65,10 +67,13 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  className="text-sm sm:text-base"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-sm">
+                  Password
+                </Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -77,6 +82,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    className="text-sm sm:text-base pr-10"
                   />
                   <Button
                     type="button"
@@ -93,12 +99,12 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                   </Button>
                 </div>
               </div>
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button type="submit" className="w-full text-sm sm:text-base" disabled={isLoading}>
                 {isLoading ? "Signing in..." : "Sign In"}
               </Button>
             </form>
 
-            <div className="mt-6 text-center text-sm text-gray-500">
+            <div className="mt-4 sm:mt-6 text-center text-xs sm:text-sm text-gray-500">
               <p>Demo Credentials:</p>
               <p>Email: admin@municipality.gov</p>
               <p>Password: admin123</p>
@@ -106,7 +112,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
           </CardContent>
         </Card>
 
-        <div className="mt-8 text-center text-sm text-gray-500">
+        <div className="mt-6 sm:mt-8 text-center text-xs sm:text-sm text-gray-500">
           <p>© 2024 Smart Dustbin Management System</p>
           <p>Powered by IoT & AI Technology</p>
         </div>

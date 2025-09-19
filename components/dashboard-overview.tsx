@@ -11,63 +11,63 @@ import { DustbinMap } from "@/components/dustbin-map"
 
 export function DashboardOverview() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* KPI Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Dustbins</CardTitle>
-            <Trash2 className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Total Dustbins</CardTitle>
+            <Trash2 className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">156</div>
+            <div className="text-lg sm:text-2xl font-bold">156</div>
             <p className="text-xs text-muted-foreground">+2 from last month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Needs Collection</CardTitle>
-            <AlertTriangle className="h-4 w-4 text-destructive" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Needs Collection</CardTitle>
+            <AlertTriangle className="h-3 w-3 sm:h-4 sm:w-4 text-destructive" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-destructive">23</div>
+            <div className="text-lg sm:text-2xl font-bold text-destructive">23</div>
             <p className="text-xs text-muted-foreground">Urgent: 8 bins over 90%</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Penalties Today</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Penalties Today</CardTitle>
+            <DollarSign className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">8</div>
+            <div className="text-lg sm:text-2xl font-bold">8</div>
             <p className="text-xs text-muted-foreground">₹12,500 in fines</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">System Health</CardTitle>
-            <Activity className="h-4 w-4 text-primary" />
+            <CardTitle className="text-xs sm:text-sm font-medium">System Health</CardTitle>
+            <Activity className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-primary">94%</div>
+            <div className="text-lg sm:text-2xl font-bold text-primary">94%</div>
             <p className="text-xs text-muted-foreground">All sensors operational</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Real-time Sensor Data */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Activity className="h-5 w-5 text-chart-1" />
+            <CardTitle className="flex items-center gap-2 text-sm sm:text-base">
+              <Activity className="h-4 w-4 sm:h-5 sm:w-5 text-chart-1" />
               Fill Levels (Ultrasonic)
             </CardTitle>
-            <CardDescription>Real-time dustbin capacity monitoring</CardDescription>
+            <CardDescription className="text-xs sm:text-sm">Real-time dustbin capacity monitoring</CardDescription>
           </CardHeader>
           <CardContent>
             <SensorChart type="ultrasonic" />
@@ -76,11 +76,11 @@ export function DashboardOverview() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Droplets className="h-5 w-5 text-chart-2" />
+            <CardTitle className="flex items-center gap-2 text-sm sm:text-base">
+              <Droplets className="h-4 w-4 sm:h-5 sm:w-5 text-chart-2" />
               Moisture Levels
             </CardTitle>
-            <CardDescription>Biodegradable waste detection</CardDescription>
+            <CardDescription className="text-xs sm:text-sm">Biodegradable waste detection</CardDescription>
           </CardHeader>
           <CardContent>
             <SensorChart type="moisture" />
@@ -89,11 +89,11 @@ export function DashboardOverview() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Wind className="h-5 w-5 text-chart-3" />
+            <CardTitle className="flex items-center gap-2 text-sm sm:text-base">
+              <Wind className="h-4 w-4 sm:h-5 sm:w-5 text-chart-3" />
               Gas Sensors
             </CardTitle>
-            <CardDescription>Waste decomposition monitoring</CardDescription>
+            <CardDescription className="text-xs sm:text-sm">Waste decomposition monitoring</CardDescription>
           </CardHeader>
           <CardContent>
             <SensorChart type="gas" />
@@ -102,11 +102,11 @@ export function DashboardOverview() {
       </div>
 
       {/* Waste Classification and Map */}
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Waste Classification Analytics</CardTitle>
-            <CardDescription>ML-powered waste segregation analysis</CardDescription>
+            <CardTitle className="text-sm sm:text-base">Waste Classification Analytics</CardTitle>
+            <CardDescription className="text-xs sm:text-sm">ML-powered waste segregation analysis</CardDescription>
           </CardHeader>
           <CardContent>
             <WasteClassificationChart />
@@ -115,11 +115,11 @@ export function DashboardOverview() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <MapPin className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-2 text-sm sm:text-base">
+              <MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
               Dustbin Locations
             </CardTitle>
-            <CardDescription>Real-time status and locations</CardDescription>
+            <CardDescription className="text-xs sm:text-sm">Real-time status and locations</CardDescription>
           </CardHeader>
           <CardContent>
             <DustbinMap />
@@ -128,7 +128,7 @@ export function DashboardOverview() {
       </div>
 
       {/* ML Predictions and Alerts */}
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader>
             <CardTitle>ML Health Predictions</CardTitle>
@@ -212,8 +212,8 @@ export function DashboardOverview() {
       {/* Recent Penalties Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Recent Penalty Records</CardTitle>
-          <CardDescription>Latest violations and fines issued</CardDescription>
+          <CardTitle className="text-sm sm:text-base">Recent Penalty Records</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">Latest violations and fines issued</CardDescription>
         </CardHeader>
         <CardContent>
           <PenaltyTable />
