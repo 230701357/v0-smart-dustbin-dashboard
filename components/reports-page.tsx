@@ -155,90 +155,102 @@ export function ReportsPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold">Reports & Analytics</h1>
-          <p className="text-muted-foreground">Generate comprehensive reports and insights</p>
+          <h1 className="text-xl sm:text-2xl font-bold">Reports & Analytics</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">Generate comprehensive reports and insights</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" onClick={handleScheduleReport}>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="outline" onClick={handleScheduleReport} className="w-full sm:w-auto bg-transparent">
             <Mail className="h-4 w-4 mr-2" />
             Schedule Report
           </Button>
-          <Button onClick={handleExportData}>
+          <Button onClick={handleExportData} className="w-full sm:w-auto">
             <Download className="h-4 w-4 mr-2" />
             Export Data
           </Button>
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Reports Generated</CardTitle>
-            <FileText className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Reports Generated</CardTitle>
+            <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">247</div>
+            <div className="text-lg sm:text-2xl font-bold">247</div>
             <p className="text-xs text-muted-foreground">+12 this month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Scheduled Reports</CardTitle>
-            <CalendarIcon className="h-4 w-4 text-primary" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Scheduled Reports</CardTitle>
+            <CalendarIcon className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-primary">8</div>
+            <div className="text-lg sm:text-2xl font-bold text-primary">8</div>
             <p className="text-xs text-muted-foreground">Active schedules</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Data Points</CardTitle>
-            <BarChart3 className="h-4 w-4 text-chart-2" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Data Points</CardTitle>
+            <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4 text-chart-2" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1.2M</div>
+            <div className="text-lg sm:text-2xl font-bold">1.2M</div>
             <p className="text-xs text-muted-foreground">Collected this month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Export Downloads</CardTitle>
-            <Download className="h-4 w-4 text-chart-3" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Export Downloads</CardTitle>
+            <Download className="h-3 w-3 sm:h-4 sm:w-4 text-chart-3" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">156</div>
+            <div className="text-lg sm:text-2xl font-bold">156</div>
             <p className="text-xs text-muted-foreground">This month</p>
           </CardContent>
         </Card>
       </div>
 
       <Tabs defaultValue="dashboard" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="dashboard">Analytics Dashboard</TabsTrigger>
-          <TabsTrigger value="templates">Report Templates</TabsTrigger>
-          <TabsTrigger value="scheduled">Scheduled Reports</TabsTrigger>
-          <TabsTrigger value="custom">Custom Reports</TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto">
+          <TabsList className="grid w-full grid-cols-4 min-w-[400px] sm:min-w-0">
+            <TabsTrigger value="dashboard" className="text-xs sm:text-sm">
+              Analytics Dashboard
+            </TabsTrigger>
+            <TabsTrigger value="templates" className="text-xs sm:text-sm">
+              Report Templates
+            </TabsTrigger>
+            <TabsTrigger value="scheduled" className="text-xs sm:text-sm">
+              Scheduled Reports
+            </TabsTrigger>
+            <TabsTrigger value="custom" className="text-xs sm:text-sm">
+              Custom Reports
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="dashboard" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Analytics Dashboard</CardTitle>
-              <CardDescription>Interactive data visualization and insights</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Analytics Dashboard</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
+                Interactive data visualization and insights
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex gap-4 items-center">
+              <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
                 <div className="space-y-2">
-                  <Label>Date Range</Label>
+                  <Label className="text-sm">Date Range</Label>
                   <Select value={dateRange} onValueChange={setDateRange}>
-                    <SelectTrigger className="w-40">
+                    <SelectTrigger className="w-full sm:w-40">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -250,9 +262,9 @@ export function ReportsPage() {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label>Zone Filter</Label>
+                  <Label className="text-sm">Zone Filter</Label>
                   <Select value={zoneFilter} onValueChange={setZoneFilter}>
-                    <SelectTrigger className="w-32">
+                    <SelectTrigger className="w-full sm:w-32">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -264,7 +276,7 @@ export function ReportsPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <Button variant="outline" onClick={handleExportChart}>
+                <Button variant="outline" onClick={handleExportChart} className="w-full sm:w-auto bg-transparent">
                   <Download className="h-4 w-4 mr-2" />
                   Export Chart
                 </Button>
@@ -275,16 +287,16 @@ export function ReportsPage() {
           <div className="grid gap-4 lg:grid-cols-2">
             <Card>
               <CardHeader>
-                <CardTitle>Monthly Collection Trends</CardTitle>
-                <CardDescription>Waste collection volume over time</CardDescription>
+                <CardTitle className="text-sm sm:text-base">Monthly Collection Trends</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Waste collection volume over time</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-[300px]">
+                <div className="h-[250px] sm:h-[300px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={monthlyCollectionData}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="month" />
-                      <YAxis />
+                      <XAxis dataKey="month" fontSize={12} />
+                      <YAxis fontSize={12} />
                       <Tooltip />
                       <Area
                         type="monotone"
@@ -315,17 +327,17 @@ export function ReportsPage() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Penalty Trends</CardTitle>
-                <CardDescription>Violations and fine amounts over time</CardDescription>
+                <CardTitle className="text-sm sm:text-base">Penalty Trends</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Violations and fine amounts over time</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-[300px]">
+                <div className="h-[250px] sm:h-[300px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={penaltyTrendsData}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="month" />
-                      <YAxis yAxisId="left" />
-                      <YAxis yAxisId="right" orientation="right" />
+                      <XAxis dataKey="month" fontSize={12} />
+                      <YAxis yAxisId="left" fontSize={12} />
+                      <YAxis yAxisId="right" orientation="right" fontSize={12} />
                       <Tooltip />
                       <Bar yAxisId="left" dataKey="penalties" fill="hsl(var(--chart-1))" />
                       <Line
@@ -344,16 +356,18 @@ export function ReportsPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Zone Performance Comparison</CardTitle>
-              <CardDescription>Efficiency metrics across different zones</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Zone Performance Comparison</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
+                Efficiency metrics across different zones
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px]">
+              <div className="h-[250px] sm:h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={zonePerformanceData}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="zone" />
-                    <YAxis />
+                    <XAxis dataKey="zone" fontSize={12} />
+                    <YAxis fontSize={12} />
                     <Tooltip />
                     <Bar dataKey="efficiency" fill="hsl(var(--chart-1))" name="Efficiency %" />
                     <Bar dataKey="collection" fill="hsl(var(--chart-2))" name="Collection Rate %" />
@@ -367,37 +381,45 @@ export function ReportsPage() {
         <TabsContent value="templates" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Report Templates</CardTitle>
-              <CardDescription>Pre-configured report templates for common use cases</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Report Templates</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
+                Pre-configured report templates for common use cases
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {reportTemplates.map((template) => (
                   <Card key={template.id}>
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-lg">{template.name}</CardTitle>
-                        <Badge variant="outline">{template.category}</Badge>
+                        <CardTitle className="text-sm sm:text-lg">{template.name}</CardTitle>
+                        <Badge variant="outline" className="text-xs">
+                          {template.category}
+                        </Badge>
                       </div>
-                      <CardDescription>{template.description}</CardDescription>
+                      <CardDescription className="text-xs sm:text-sm">{template.description}</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-xs sm:text-sm">
                           <span className="text-muted-foreground">Frequency:</span>
                           <span>{template.frequency}</span>
                         </div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-xs sm:text-sm">
                           <span className="text-muted-foreground">Last Generated:</span>
                           <span>{template.lastGenerated}</span>
                         </div>
                         <div className="flex gap-2">
-                          <Button size="sm" className="flex-1" onClick={() => handleGenerateTemplate(template.id)}>
-                            <FileText className="h-4 w-4 mr-2" />
+                          <Button
+                            size="sm"
+                            className="flex-1 text-xs"
+                            onClick={() => handleGenerateTemplate(template.id)}
+                          >
+                            <FileText className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                             Generate
                           </Button>
                           <Button variant="outline" size="sm" onClick={() => handleDownloadTemplate(template.id)}>
-                            <Download className="h-4 w-4" />
+                            <Download className="h-3 w-3 sm:h-4 sm:w-4" />
                           </Button>
                         </div>
                       </div>
@@ -412,12 +434,14 @@ export function ReportsPage() {
         <TabsContent value="scheduled" className="space-y-4">
           <Card>
             <CardHeader>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <CardTitle>Scheduled Reports</CardTitle>
-                  <CardDescription>Automated report generation schedules</CardDescription>
+                  <CardTitle className="text-sm sm:text-base">Scheduled Reports</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">
+                    Automated report generation schedules
+                  </CardDescription>
                 </div>
-                <Button onClick={handleNewSchedule}>
+                <Button onClick={handleNewSchedule} className="w-full sm:w-auto">
                   <CalendarIcon className="h-4 w-4 mr-2" />
                   New Schedule
                 </Button>
@@ -451,14 +475,19 @@ export function ReportsPage() {
                     status: "Paused",
                   },
                 ].map((schedule, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div
+                    key={idx}
+                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg gap-4"
+                  >
                     <div className="space-y-1">
-                      <div className="font-medium">{schedule.name}</div>
-                      <div className="text-sm text-muted-foreground">{schedule.frequency}</div>
-                      <div className="text-sm text-muted-foreground">To: {schedule.recipients}</div>
+                      <div className="font-medium text-sm sm:text-base">{schedule.name}</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">{schedule.frequency}</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">To: {schedule.recipients}</div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Badge variant={schedule.status === "Active" ? "default" : "secondary"}>{schedule.status}</Badge>
+                      <Badge variant={schedule.status === "Active" ? "default" : "secondary"} className="text-xs">
+                        {schedule.status}
+                      </Badge>
                       <Button variant="outline" size="sm" onClick={() => handleEditSchedule(schedule.name)}>
                         Edit
                       </Button>
@@ -473,24 +502,31 @@ export function ReportsPage() {
         <TabsContent value="custom" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Custom Report Builder</CardTitle>
-              <CardDescription>Create custom reports with specific parameters</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Custom Report Builder</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
+                Create custom reports with specific parameters
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="report-name">Report Name</Label>
+                  <Label htmlFor="report-name" className="text-sm">
+                    Report Name
+                  </Label>
                   <Input
                     id="report-name"
                     placeholder="Enter report name"
                     value={reportName}
                     onChange={(e) => setReportName(e.target.value)}
+                    className="text-sm"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="report-type">Report Type</Label>
+                  <Label htmlFor="report-type" className="text-sm">
+                    Report Type
+                  </Label>
                   <Select value={reportType} onValueChange={setReportType}>
-                    <SelectTrigger>
+                    <SelectTrigger className="text-sm">
                       <SelectValue placeholder="Select report type" />
                     </SelectTrigger>
                     <SelectContent>
@@ -505,10 +541,13 @@ export function ReportsPage() {
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label>Date Range</Label>
+                  <Label className="text-sm">Date Range</Label>
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button variant="outline" className="w-full justify-start text-left font-normal bg-transparent">
+                      <Button
+                        variant="outline"
+                        className="w-full justify-start text-left font-normal bg-transparent text-sm"
+                      >
                         <CalendarIcon className="mr-2 h-4 w-4" />
                         {date ? format(date, "PPP") : "Pick a date"}
                       </Button>
@@ -519,9 +558,11 @@ export function ReportsPage() {
                   </Popover>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="zones">Zones</Label>
+                  <Label htmlFor="zones" className="text-sm">
+                    Zones
+                  </Label>
                   <Select>
-                    <SelectTrigger>
+                    <SelectTrigger className="text-sm">
                       <SelectValue placeholder="Select zones" />
                     </SelectTrigger>
                     <SelectContent>
@@ -536,8 +577,8 @@ export function ReportsPage() {
               </div>
 
               <div className="space-y-2">
-                <Label>Data Sources</Label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <Label className="text-sm">Data Sources</Label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {[
                     "Sensor Data",
                     "Collection Records",
@@ -550,7 +591,7 @@ export function ReportsPage() {
                   ].map((source) => (
                     <div key={source} className="flex items-center space-x-2">
                       <input type="checkbox" id={source} className="rounded" />
-                      <Label htmlFor={source} className="text-sm">
+                      <Label htmlFor={source} className="text-xs sm:text-sm">
                         {source}
                       </Label>
                     </div>
@@ -559,9 +600,11 @@ export function ReportsPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="format">Export Format</Label>
+                <Label htmlFor="format" className="text-sm">
+                  Export Format
+                </Label>
                 <Select defaultValue="pdf">
-                  <SelectTrigger className="w-48">
+                  <SelectTrigger className="w-full sm:w-48 text-sm">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -573,16 +616,20 @@ export function ReportsPage() {
                 </Select>
               </div>
 
-              <div className="flex gap-2">
-                <Button onClick={handleGenerateCustomReport}>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <Button onClick={handleGenerateCustomReport} className="w-full sm:w-auto">
                   <FileText className="h-4 w-4 mr-2" />
                   Generate Report
                 </Button>
-                <Button variant="outline" onClick={handleScheduleCustomReport}>
+                <Button
+                  variant="outline"
+                  onClick={handleScheduleCustomReport}
+                  className="w-full sm:w-auto bg-transparent"
+                >
                   <CalendarIcon className="h-4 w-4 mr-2" />
                   Schedule Report
                 </Button>
-                <Button variant="outline" onClick={handleSaveTemplate}>
+                <Button variant="outline" onClick={handleSaveTemplate} className="w-full sm:w-auto bg-transparent">
                   <FileSpreadsheet className="h-4 w-4 mr-2" />
                   Save Template
                 </Button>

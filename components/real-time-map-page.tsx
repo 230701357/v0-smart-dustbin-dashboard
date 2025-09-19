@@ -72,37 +72,39 @@ const dustbins = [
 
 export function RealTimeMapPage() {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold">Real-time Map</h1>
-          <p className="text-muted-foreground">Live dustbin locations and status monitoring</p>
+          <h1 className="text-xl sm:text-2xl font-bold">Real-time Map</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">Live dustbin locations and status monitoring</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline">
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="outline" className="w-full sm:w-auto bg-transparent">
             <Navigation className="h-4 w-4 mr-2" />
             Route Planning
           </Button>
-          <Button>
+          <Button className="w-full sm:w-auto">
             <Truck className="h-4 w-4 mr-2" />
             Dispatch Collection
           </Button>
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-3">
         {/* Map View */}
         <div className="lg:col-span-2">
           <Card>
             <CardHeader>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <CardTitle>Interactive Map</CardTitle>
-                  <CardDescription>Real-time dustbin locations and status</CardDescription>
+                  <CardTitle className="text-sm sm:text-base">Interactive Map</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">
+                    Real-time dustbin locations and status
+                  </CardDescription>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <Select defaultValue="all">
-                    <SelectTrigger className="w-32">
+                    <SelectTrigger className="w-full sm:w-32">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -119,7 +121,7 @@ export function RealTimeMapPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="relative h-[500px] bg-muted rounded-lg overflow-hidden">
+              <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] bg-muted rounded-lg overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10" />
 
                 {/* Map markers */}
@@ -133,7 +135,7 @@ export function RealTimeMapPage() {
                     }}
                   >
                     <div
-                      className="w-6 h-6 rounded-full border-2 border-background shadow-lg flex items-center justify-center"
+                      className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-background shadow-lg flex items-center justify-center"
                       style={{
                         backgroundColor:
                           dustbin.status === "critical"
@@ -146,12 +148,11 @@ export function RealTimeMapPage() {
                       <span className="text-xs font-bold text-white">{dustbin.fillLevel}</span>
                     </div>
 
-                    {/* Tooltip */}
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="bg-popover border rounded-lg p-3 shadow-lg min-w-48">
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                      <div className="bg-popover border rounded-lg p-3 shadow-lg min-w-[180px] sm:min-w-[200px]">
                         <div className="space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className="font-medium">{dustbin.id}</span>
+                            <span className="font-medium text-sm">{dustbin.id}</span>
                             <Badge
                               variant={
                                 dustbin.status === "critical"
@@ -160,11 +161,12 @@ export function RealTimeMapPage() {
                                     ? "secondary"
                                     : "outline"
                               }
+                              className="text-xs"
                             >
                               {dustbin.status}
                             </Badge>
                           </div>
-                          <div className="text-sm space-y-1">
+                          <div className="text-xs sm:text-sm space-y-1">
                             <div>Zone: {dustbin.zone}</div>
                             <div>Fill Level: {dustbin.fillLevel}%</div>
                             <div>Last Collection: {dustbin.lastCollection}</div>
@@ -176,20 +178,22 @@ export function RealTimeMapPage() {
                   </div>
                 ))}
 
-                {/* Legend */}
-                <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm rounded-lg p-3 space-y-2">
-                  <h4 className="font-medium text-sm">Status Legend</h4>
+                <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-background/90 backdrop-blur-sm rounded-lg p-2 sm:p-3 space-y-2">
+                  <h4 className="font-medium text-xs sm:text-sm">Status Legend</h4>
                   <div className="space-y-1">
                     <div className="flex items-center gap-2 text-xs">
-                      <div className="w-3 h-3 rounded-full bg-primary"></div>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-primary"></div>
                       <span>Normal (0-70%)</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
-                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "hsl(var(--chart-2))" }}></div>
+                      <div
+                        className="w-2 h-2 sm:w-3 sm:h-3 rounded-full"
+                        style={{ backgroundColor: "hsl(var(--chart-2))" }}
+                      ></div>
                       <span>Warning (71-90%)</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs">
-                      <div className="w-3 h-3 rounded-full bg-destructive"></div>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-destructive"></div>
                       <span>Critical (91-100%)</span>
                     </div>
                   </div>
@@ -203,15 +207,15 @@ export function RealTimeMapPage() {
         <div className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Search & Filter</CardTitle>
+              <CardTitle className="text-sm sm:text-base">Search & Filter</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Search dustbin ID..." className="pl-10" />
+                <Input placeholder="Search dustbin ID..." className="pl-10 text-sm" />
               </div>
               <Select defaultValue="all">
-                <SelectTrigger>
+                <SelectTrigger className="text-sm">
                   <SelectValue placeholder="Filter by status" />
                 </SelectTrigger>
                 <SelectContent>
@@ -226,16 +230,16 @@ export function RealTimeMapPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Dustbin Status</CardTitle>
-              <CardDescription>Live status of all dustbins</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Dustbin Status</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Live status of all dustbins</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3 max-h-[400px] overflow-y-auto">
+              <div className="space-y-3 max-h-[300px] sm:max-h-[400px] overflow-y-auto">
                 {dustbins.map((dustbin) => (
                   <div key={dustbin.id} className="flex items-center justify-between p-3 rounded-lg border">
                     <div className="flex items-center gap-3">
                       <div
-                        className="w-4 h-4 rounded-full"
+                        className="w-3 h-3 sm:w-4 sm:h-4 rounded-full"
                         style={{
                           backgroundColor:
                             dustbin.status === "critical"

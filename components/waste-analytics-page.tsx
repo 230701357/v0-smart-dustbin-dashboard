@@ -77,15 +77,17 @@ export function WasteAnalyticsPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold">Waste Classification Analytics</h1>
-          <p className="text-muted-foreground">AI-powered waste segregation analysis and insights</p>
+          <h1 className="text-xl sm:text-2xl font-bold">Waste Classification Analytics</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
+            AI-powered waste segregation analysis and insights
+          </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <Select value={timeRange} onValueChange={setTimeRange}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-full sm:w-32">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -94,88 +96,99 @@ export function WasteAnalyticsPage() {
               <SelectItem value="month">This Month</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline" onClick={handleRetrainModel}>
+          <Button variant="outline" onClick={handleRetrainModel} className="w-full sm:w-auto bg-transparent">
             <Brain className="h-4 w-4 mr-2" />
-            Retrain Model
+            <span className="sm:inline">Retrain Model</span>
           </Button>
         </div>
       </div>
 
-      {/* Key Metrics */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Classification Accuracy</CardTitle>
-            <Target className="h-4 w-4 text-primary" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Classification Accuracy</CardTitle>
+            <Target className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-primary">91.2%</div>
+            <div className="text-lg sm:text-2xl font-bold text-primary">91.2%</div>
             <p className="text-xs text-muted-foreground">+2.1% from last week</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Proper Segregation</CardTitle>
-            <Recycle className="h-4 w-4 text-chart-2" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Proper Segregation</CardTitle>
+            <Recycle className="h-3 w-3 sm:h-4 sm:w-4 text-chart-2" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-chart-2">87.5%</div>
+            <div className="text-lg sm:text-2xl font-bold text-chart-2">87.5%</div>
             <p className="text-xs text-muted-foreground">Citizens following guidelines</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Contamination Rate</CardTitle>
-            <AlertTriangle className="h-4 w-4 text-destructive" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Contamination Rate</CardTitle>
+            <AlertTriangle className="h-3 w-3 sm:h-4 sm:w-4 text-destructive" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-destructive">7.2%</div>
+            <div className="text-lg sm:text-2xl font-bold text-destructive">7.2%</div>
             <p className="text-xs text-muted-foreground">-1.8% improvement</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">ML Confidence</CardTitle>
-            <Brain className="h-4 w-4 text-chart-3" />
+            <CardTitle className="text-xs sm:text-sm font-medium">ML Confidence</CardTitle>
+            <Brain className="h-3 w-3 sm:h-4 sm:w-4 text-chart-3" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-chart-3">93.8%</div>
+            <div className="text-lg sm:text-2xl font-bold text-chart-3">93.8%</div>
             <p className="text-xs text-muted-foreground">Model reliability score</p>
           </CardContent>
         </Card>
       </div>
 
       <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="ml-performance">ML Performance</TabsTrigger>
-          <TabsTrigger value="trends">Trends</TabsTrigger>
-          <TabsTrigger value="zones">Zone Analysis</TabsTrigger>
-          <TabsTrigger value="sensors">Sensor Correlation</TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto">
+          <TabsList className="grid w-full grid-cols-5 min-w-[500px] sm:min-w-0">
+            <TabsTrigger value="overview" className="text-xs sm:text-sm">
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="ml-performance" className="text-xs sm:text-sm">
+              ML Performance
+            </TabsTrigger>
+            <TabsTrigger value="trends" className="text-xs sm:text-sm">
+              Trends
+            </TabsTrigger>
+            <TabsTrigger value="zones" className="text-xs sm:text-sm">
+              Zone Analysis
+            </TabsTrigger>
+            <TabsTrigger value="sensors" className="text-xs sm:text-sm">
+              Sensor Correlation
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="overview" className="space-y-4">
           <div className="grid gap-4 lg:grid-cols-2">
             {/* Main Classification Chart */}
             <Card>
               <CardHeader>
-                <CardTitle>Current Waste Distribution</CardTitle>
-                <CardDescription>Real-time classification breakdown</CardDescription>
+                <CardTitle className="text-sm sm:text-base">Current Waste Distribution</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Real-time classification breakdown</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="h-[300px]">
+                  <div className="h-[250px] sm:h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
                           data={wasteClassificationData}
                           cx="50%"
                           cy="50%"
-                          innerRadius={80}
-                          outerRadius={120}
+                          innerRadius={60}
+                          outerRadius={100}
                           paddingAngle={5}
                           dataKey="value"
                         >
@@ -210,7 +223,7 @@ export function WasteAnalyticsPage() {
                     </ResponsiveContainer>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {wasteClassificationData.map((item, index) => (
                       <div key={index} className="text-center space-y-2">
                         <div className="flex items-center justify-center gap-2">
@@ -231,16 +244,16 @@ export function WasteAnalyticsPage() {
             {/* Hourly Trends */}
             <Card>
               <CardHeader>
-                <CardTitle>24-Hour Classification Trends</CardTitle>
-                <CardDescription>Waste patterns throughout the day</CardDescription>
+                <CardTitle className="text-sm sm:text-base">24-Hour Classification Trends</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Waste patterns throughout the day</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-[300px]">
+                <div className="h-[250px] sm:h-[300px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={hourlyData}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="hour" />
-                      <YAxis />
+                      <XAxis dataKey="hour" fontSize={12} />
+                      <YAxis fontSize={12} />
                       <Tooltip />
                       <Area
                         type="monotone"
@@ -275,8 +288,8 @@ export function WasteAnalyticsPage() {
           <div className="grid gap-4 lg:grid-cols-2">
             <Card>
               <CardHeader>
-                <CardTitle>ML Model Performance</CardTitle>
-                <CardDescription>Classification accuracy by category</CardDescription>
+                <CardTitle className="text-sm sm:text-base">ML Model Performance</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Classification accuracy by category</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {mlAccuracyData.map((item, index) => (
@@ -297,11 +310,11 @@ export function WasteAnalyticsPage() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Model Training History</CardTitle>
-                <CardDescription>Accuracy improvements over time</CardDescription>
+                <CardTitle className="text-sm sm:text-base">Model Training History</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Accuracy improvements over time</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-[200px]">
+                <div className="h-[180px] sm:h-[200px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart
                       data={[
@@ -313,8 +326,8 @@ export function WasteAnalyticsPage() {
                       ]}
                     >
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="version" />
-                      <YAxis domain={[70, 100]} />
+                      <XAxis dataKey="version" fontSize={12} />
+                      <YAxis domain={[70, 100]} fontSize={12} />
                       <Tooltip />
                       <Line type="monotone" dataKey="accuracy" stroke="hsl(var(--primary))" strokeWidth={2} />
                     </LineChart>
@@ -326,17 +339,19 @@ export function WasteAnalyticsPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Classification Insights</CardTitle>
-              <CardDescription>AI-generated insights and recommendations</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Classification Insights</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
+                AI-generated insights and recommendations
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="p-4 rounded-lg border bg-muted/50">
                   <div className="flex items-center gap-2 mb-2">
                     <Leaf className="h-4 w-4 text-chart-2" />
-                    <span className="font-medium">Biodegradable Detection</span>
+                    <span className="font-medium text-sm sm:text-base">Biodegradable Detection</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     High moisture levels {String.fromCharCode(62)}60% combined with specific gas signatures indicate
                     biodegradable waste with 94% accuracy.
                   </p>
@@ -344,9 +359,9 @@ export function WasteAnalyticsPage() {
                 <div className="p-4 rounded-lg border bg-muted/50">
                   <div className="flex items-center gap-2 mb-2">
                     <Zap className="h-4 w-4 text-chart-3" />
-                    <span className="font-medium">Contamination Patterns</span>
+                    <span className="font-medium text-sm sm:text-base">Contamination Patterns</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Mixed waste typically occurs during peak hours (12-16:00) when disposal volume is highest.
                   </p>
                 </div>
@@ -358,16 +373,16 @@ export function WasteAnalyticsPage() {
         <TabsContent value="zones" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Zone-wise Classification Analysis</CardTitle>
-              <CardDescription>Waste segregation performance by area</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Zone-wise Classification Analysis</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Waste segregation performance by area</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px]">
+              <div className="h-[250px] sm:h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={zoneData}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="zone" />
-                    <YAxis />
+                    <XAxis dataKey="zone" fontSize={12} />
+                    <YAxis fontSize={12} />
                     <Tooltip />
                     <Bar dataKey="biodegradable" fill="hsl(var(--chart-2))" />
                     <Bar dataKey="nonBiodegradable" fill="hsl(var(--chart-3))" />
@@ -382,17 +397,19 @@ export function WasteAnalyticsPage() {
         <TabsContent value="sensors" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Sensor Data Correlation</CardTitle>
-              <CardDescription>How moisture and gas sensors contribute to classification</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Sensor Data Correlation</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
+                How moisture and gas sensors contribute to classification
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px]">
+              <div className="h-[250px] sm:h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={sensorCorrelationData}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="time" />
-                    <YAxis yAxisId="left" />
-                    <YAxis yAxisId="right" orientation="right" />
+                    <XAxis dataKey="time" fontSize={12} />
+                    <YAxis yAxisId="left" fontSize={12} />
+                    <YAxis yAxisId="right" orientation="right" fontSize={12} />
                     <Tooltip />
                     <Line
                       yAxisId="left"

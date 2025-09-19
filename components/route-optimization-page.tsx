@@ -162,91 +162,100 @@ export function RouteOptimizationPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold">Route Planning & Dispatch</h1>
-          <p className="text-muted-foreground">Optimize collection routes and dispatch teams</p>
+          <h1 className="text-xl sm:text-2xl font-bold">Route Planning & Dispatch</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">Optimize collection routes and dispatch teams</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" onClick={handleCreateRoute}>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Button variant="outline" onClick={handleCreateRoute} className="w-full sm:w-auto bg-transparent">
             <Route className="h-4 w-4 mr-2" />
             Plan New Route
           </Button>
-          <Button onClick={handleBulkDispatch}>
+          <Button onClick={handleBulkDispatch} className="w-full sm:w-auto">
             <Send className="h-4 w-4 mr-2" />
             Dispatch All
           </Button>
         </div>
       </div>
 
-      {/* Enhanced Key Metrics */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Routes</CardTitle>
-            <Route className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Active Routes</CardTitle>
+            <Route className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">8</div>
+            <div className="text-lg sm:text-2xl font-bold">8</div>
             <p className="text-xs text-muted-foreground">2 in progress, 6 scheduled</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Fleet Utilization</CardTitle>
-            <Truck className="h-4 w-4 text-primary" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Fleet Utilization</CardTitle>
+            <Truck className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-primary">87%</div>
+            <div className="text-lg sm:text-2xl font-bold text-primary">87%</div>
             <p className="text-xs text-muted-foreground">12 of 14 vehicles active</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Avg Service Time</CardTitle>
-            <Clock className="h-4 w-4 text-chart-2" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Avg Service Time</CardTitle>
+            <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-chart-2" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-chart-2">3.2</div>
+            <div className="text-lg sm:text-2xl font-bold text-chart-2">3.2</div>
             <p className="text-xs text-muted-foreground">minutes per dustbin</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Time Savings</CardTitle>
-            <Clock className="h-4 w-4 text-chart-3" />
+            <CardTitle className="text-xs sm:text-sm font-medium">Time Savings</CardTitle>
+            <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-chart-3" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-chart-3">23%</div>
+            <div className="text-lg sm:text-2xl font-bold text-chart-3">23%</div>
             <p className="text-xs text-muted-foreground">vs manual routing</p>
           </CardContent>
         </Card>
       </div>
 
       <Tabs defaultValue="dispatch" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="dispatch">Dispatch Center</TabsTrigger>
-          <TabsTrigger value="routes">Active Routes</TabsTrigger>
-          <TabsTrigger value="optimization">Route Optimization</TabsTrigger>
-          <TabsTrigger value="fleet">Fleet Management</TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto">
+          <TabsList className="grid w-full grid-cols-4 min-w-[400px] sm:min-w-0">
+            <TabsTrigger value="dispatch" className="text-xs sm:text-sm">
+              Dispatch Center
+            </TabsTrigger>
+            <TabsTrigger value="routes" className="text-xs sm:text-sm">
+              Active Routes
+            </TabsTrigger>
+            <TabsTrigger value="optimization" className="text-xs sm:text-sm">
+              Route Optimization
+            </TabsTrigger>
+            <TabsTrigger value="fleet" className="text-xs sm:text-sm">
+              Fleet Management
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="dispatch" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Collection Dispatch Center</CardTitle>
-              <CardDescription>Real-time dispatch and coordination</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Collection Dispatch Center</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Real-time dispatch and coordination</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid gap-4 lg:grid-cols-2">
                 <div className="space-y-4">
-                  <h4 className="font-medium">Quick Dispatch</h4>
+                  <h4 className="font-medium text-sm sm:text-base">Quick Dispatch</h4>
                   <div className="space-y-3">
-                    <div className="flex gap-2">
+                    <div className="flex flex-col sm:flex-row gap-2">
                       <Select defaultValue="zone-a">
                         <SelectTrigger className="flex-1">
                           <SelectValue />
@@ -257,26 +266,30 @@ export function RouteOptimizationPage() {
                           <SelectItem value="zone-c">Zone C</SelectItem>
                         </SelectContent>
                       </Select>
-                      <Button onClick={() => handleRouteDispatch("ZONE-A")}>
+                      <Button onClick={() => handleRouteDispatch("ZONE-A")} className="w-full sm:w-auto">
                         <Send className="h-4 w-4 mr-2" />
                         Dispatch
                       </Button>
                     </div>
-                    <div className="flex gap-2">
-                      <Input placeholder="Enter dustbin ID (e.g., DB-023)" />
-                      <Button variant="outline" onClick={handleEmergencyDispatch}>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <Input placeholder="Enter dustbin ID (e.g., DB-023)" className="text-sm" />
+                      <Button
+                        variant="outline"
+                        onClick={handleEmergencyDispatch}
+                        className="w-full sm:w-auto bg-transparent"
+                      >
                         Emergency
                       </Button>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <h4 className="font-medium">Scheduled Collections</h4>
+                  <h4 className="font-medium text-sm sm:text-base">Scheduled Collections</h4>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between p-2 border rounded">
                       <div>
-                        <span className="font-medium">Morning Route A</span>
-                        <p className="text-sm text-muted-foreground">8:00 AM - 12 dustbins</p>
+                        <span className="font-medium text-sm">Morning Route A</span>
+                        <p className="text-xs text-muted-foreground">8:00 AM - 12 dustbins</p>
                       </div>
                       <Button size="sm" onClick={() => handleRouteDispatch("RT-001")}>
                         <Send className="h-4 w-4" />
@@ -284,8 +297,8 @@ export function RouteOptimizationPage() {
                     </div>
                     <div className="flex items-center justify-between p-2 border rounded">
                       <div>
-                        <span className="font-medium">Afternoon Route B</span>
-                        <p className="text-sm text-muted-foreground">2:00 PM - 15 dustbins</p>
+                        <span className="font-medium text-sm">Afternoon Route B</span>
+                        <p className="text-xs text-muted-foreground">2:00 PM - 15 dustbins</p>
                       </div>
                       <Button size="sm" onClick={() => handleRouteDispatch("RT-002")}>
                         <Send className="h-4 w-4" />
@@ -299,29 +312,36 @@ export function RouteOptimizationPage() {
         </TabsContent>
 
         <TabsContent value="routes" className="space-y-4">
-          {/* Route Control Panel */}
           <Card>
             <CardHeader>
-              <CardTitle>Route Control Panel</CardTitle>
-              <CardDescription>Monitor and control active collection routes</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Route Control Panel</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
+                Monitor and control active collection routes
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex gap-4 items-center">
-                <Button onClick={handleStartAllRoutes}>
-                  <Play className="h-4 w-4 mr-2" />
-                  Start All Routes
-                </Button>
-                <Button variant="outline" onClick={handlePauseRoutes}>
-                  <Pause className="h-4 w-4 mr-2" />
-                  Pause Routes
-                </Button>
-                <Button variant="outline" onClick={handleEmergencyReroute}>
-                  <Navigation className="h-4 w-4 mr-2" />
-                  Emergency Reroute
-                </Button>
-                <div className="ml-auto flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Button onClick={handleStartAllRoutes} className="w-full sm:w-auto">
+                    <Play className="h-4 w-4 mr-2" />
+                    Start All Routes
+                  </Button>
+                  <Button variant="outline" onClick={handlePauseRoutes} className="w-full sm:w-auto bg-transparent">
+                    <Pause className="h-4 w-4 mr-2" />
+                    Pause Routes
+                  </Button>
+                  <Button
+                    variant="outline"
+                    onClick={handleEmergencyReroute}
+                    className="w-full sm:w-auto bg-transparent"
+                  >
+                    <Navigation className="h-4 w-4 mr-2" />
+                    Emergency Reroute
+                  </Button>
+                </div>
+                <div className="sm:ml-auto">
                   <Select value={zoneFilter} onValueChange={setZoneFilter}>
-                    <SelectTrigger className="w-32">
+                    <SelectTrigger className="w-full sm:w-32">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -336,107 +356,110 @@ export function RouteOptimizationPage() {
             </CardContent>
           </Card>
 
-          {/* Routes Table */}
           <Card>
             <CardHeader>
-              <CardTitle>Current Routes</CardTitle>
-              <CardDescription>Real-time status of collection routes</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Current Routes</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Real-time status of collection routes</CardDescription>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Route</TableHead>
-                    <TableHead>Vehicle & Driver</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Progress</TableHead>
-                    <TableHead>Distance</TableHead>
-                    <TableHead>Time</TableHead>
-                    <TableHead>Efficiency</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {routes.map((route) => (
-                    <TableRow key={route.id}>
-                      <TableCell>
-                        <div>
-                          <div className="font-medium">{route.name}</div>
-                          <div className="text-sm text-muted-foreground">{route.id}</div>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <div>
-                          <div className="font-medium">{route.vehicle}</div>
-                          <div className="text-sm text-muted-foreground">{route.driver}</div>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <Badge
-                          variant={
-                            route.status === "Active"
-                              ? "default"
-                              : route.status === "In Progress"
-                                ? "secondary"
-                                : "outline"
-                          }
-                        >
-                          {route.status}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <div className="space-y-1">
-                          <div className="flex justify-between text-sm">
-                            <span>{route.completionRate}%</span>
-                            <span>{route.dustbins} bins</span>
-                          </div>
-                          <Progress value={route.completionRate} className="h-2" />
-                        </div>
-                      </TableCell>
-                      <TableCell>{route.distance}</TableCell>
-                      <TableCell>
-                        <div>
-                          <div className="text-sm">{route.estimatedTime}</div>
-                          <div className="text-xs text-muted-foreground">Actual: {route.actualTime}</div>
-                        </div>
-                      </TableCell>
-                      <TableCell>{route.fuelEfficiency}</TableCell>
-                      <TableCell>
-                        <div className="flex gap-1">
-                          <Button variant="ghost" size="sm" onClick={() => handleViewRoute(route.id)}>
-                            <MapPin className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="sm" onClick={() => handleNavigateRoute(route.id)}>
-                            <Navigation className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="min-w-[150px]">Route</TableHead>
+                      <TableHead className="min-w-[140px]">Vehicle & Driver</TableHead>
+                      <TableHead className="min-w-[100px]">Status</TableHead>
+                      <TableHead className="min-w-[120px]">Progress</TableHead>
+                      <TableHead className="min-w-[80px]">Distance</TableHead>
+                      <TableHead className="min-w-[100px]">Time</TableHead>
+                      <TableHead className="min-w-[100px]">Efficiency</TableHead>
+                      <TableHead className="min-w-[80px]">Actions</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {routes.map((route) => (
+                      <TableRow key={route.id}>
+                        <TableCell>
+                          <div>
+                            <div className="font-medium text-sm">{route.name}</div>
+                            <div className="text-xs text-muted-foreground">{route.id}</div>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <div>
+                            <div className="font-medium text-sm">{route.vehicle}</div>
+                            <div className="text-xs text-muted-foreground">{route.driver}</div>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge
+                            variant={
+                              route.status === "Active"
+                                ? "default"
+                                : route.status === "In Progress"
+                                  ? "secondary"
+                                  : "outline"
+                            }
+                            className="text-xs"
+                          >
+                            {route.status}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <div className="space-y-1">
+                            <div className="flex justify-between text-xs">
+                              <span>{route.completionRate}%</span>
+                              <span>{route.dustbins} bins</span>
+                            </div>
+                            <Progress value={route.completionRate} className="h-2" />
+                          </div>
+                        </TableCell>
+                        <TableCell className="text-sm">{route.distance}</TableCell>
+                        <TableCell>
+                          <div>
+                            <div className="text-xs">{route.estimatedTime}</div>
+                            <div className="text-xs text-muted-foreground">Actual: {route.actualTime}</div>
+                          </div>
+                        </TableCell>
+                        <TableCell className="text-xs">{route.fuelEfficiency}</TableCell>
+                        <TableCell>
+                          <div className="flex gap-1">
+                            <Button variant="ghost" size="sm" onClick={() => handleViewRoute(route.id)}>
+                              <MapPin className="h-4 w-4" />
+                            </Button>
+                            <Button variant="ghost" size="sm" onClick={() => handleNavigateRoute(route.id)}>
+                              <Navigation className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
 
         <TabsContent value="optimization" className="space-y-4">
           <div className="grid gap-4 lg:grid-cols-2">
-            {/* Optimization Results */}
             <Card>
               <CardHeader>
-                <CardTitle>Optimization Results</CardTitle>
-                <CardDescription>Potential savings from route optimization</CardDescription>
+                <CardTitle className="text-sm sm:text-base">Optimization Results</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">
+                  Potential savings from route optimization
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {optimizationMetrics.map((metric, index) => (
                   <div key={index} className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="font-medium">{metric.metric}</span>
-                      <Badge variant="outline" className="text-chart-2">
+                      <Badge variant="outline" className="text-chart-2 text-xs">
                         -{metric.savings}
                       </Badge>
                     </div>
-                    <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div className="grid grid-cols-2 gap-4 text-xs sm:text-sm">
                       <div>
                         <span className="text-muted-foreground">Current: </span>
                         <span>{metric.current}</span>
@@ -451,17 +474,20 @@ export function RouteOptimizationPage() {
               </CardContent>
             </Card>
 
-            {/* Optimization Settings */}
             <Card>
               <CardHeader>
-                <CardTitle>Optimization Parameters</CardTitle>
-                <CardDescription>Configure route optimization preferences</CardDescription>
+                <CardTitle className="text-sm sm:text-base">Optimization Parameters</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">
+                  Configure route optimization preferences
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="priority">Optimization Priority</Label>
+                  <Label htmlFor="priority" className="text-sm">
+                    Optimization Priority
+                  </Label>
                   <Select value={optimizationPriority} onValueChange={setOptimizationPriority}>
-                    <SelectTrigger>
+                    <SelectTrigger className="text-sm">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -473,9 +499,11 @@ export function RouteOptimizationPage() {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="algorithm">Algorithm</Label>
+                  <Label htmlFor="algorithm" className="text-sm">
+                    Algorithm
+                  </Label>
                   <Select value={algorithm} onValueChange={setAlgorithm}>
-                    <SelectTrigger>
+                    <SelectTrigger className="text-sm">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -487,23 +515,25 @@ export function RouteOptimizationPage() {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="constraints">Constraints</Label>
+                  <Label htmlFor="constraints" className="text-sm">
+                    Constraints
+                  </Label>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <input type="checkbox" id="traffic" defaultChecked />
-                      <Label htmlFor="traffic" className="text-sm">
+                      <Label htmlFor="traffic" className="text-xs sm:text-sm">
                         Consider traffic patterns
                       </Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <input type="checkbox" id="capacity" defaultChecked />
-                      <Label htmlFor="capacity" className="text-sm">
+                      <Label htmlFor="capacity" className="text-xs sm:text-sm">
                         Vehicle capacity limits
                       </Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <input type="checkbox" id="time-windows" defaultChecked />
-                      <Label htmlFor="time-windows" className="text-sm">
+                      <Label htmlFor="time-windows" className="text-xs sm:text-sm">
                         Collection time windows
                       </Label>
                     </div>
@@ -517,44 +547,47 @@ export function RouteOptimizationPage() {
             </Card>
           </div>
 
-          {/* Route Comparison */}
           <Card>
             <CardHeader>
-              <CardTitle>Route Comparison</CardTitle>
-              <CardDescription>Compare current vs optimized routes</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Route Comparison</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Compare current vs optimized routes</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-4">
-                  <h4 className="font-medium">Current Routes</h4>
+                  <h4 className="font-medium text-sm">Current Routes</h4>
                   <div className="space-y-2">
                     {routes.map((route, idx) => (
                       <div key={idx} className="flex items-center justify-between p-3 border rounded-lg">
                         <div>
-                          <div className="font-medium">{route.name}</div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="font-medium text-sm">{route.name}</div>
+                          <div className="text-xs text-muted-foreground">
                             {route.distance} • {route.estimatedTime}
                           </div>
                         </div>
-                        <Badge variant="outline">{route.dustbins} bins</Badge>
+                        <Badge variant="outline" className="text-xs">
+                          {route.dustbins} bins
+                        </Badge>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <h4 className="font-medium">Optimized Routes</h4>
+                  <h4 className="font-medium text-sm">Optimized Routes</h4>
                   <div className="space-y-2">
                     {routes.map((route, idx) => (
                       <div key={idx} className="flex items-center justify-between p-3 border rounded-lg bg-muted/50">
                         <div>
-                          <div className="font-medium">{route.name}</div>
-                          <div className="text-sm text-chart-2">
+                          <div className="font-medium text-sm">{route.name}</div>
+                          <div className="text-xs text-chart-2">
                             {(Number.parseFloat(route.distance) * 0.8).toFixed(1)} km •{" "}
                             {Math.floor(Number.parseInt(route.estimatedTime) * 0.8)}h{" "}
                             {Math.floor(Number.parseInt(route.estimatedTime.split("h ")[1]) * 0.8)}m
                           </div>
                         </div>
-                        <Badge variant="secondary">{route.dustbins} bins</Badge>
+                        <Badge variant="secondary" className="text-xs">
+                          {route.dustbins} bins
+                        </Badge>
                       </div>
                     ))}
                   </div>
@@ -567,40 +600,42 @@ export function RouteOptimizationPage() {
         <TabsContent value="fleet" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Fleet Overview</CardTitle>
-              <CardDescription>Monitor vehicle status and performance</CardDescription>
+              <CardTitle className="text-sm sm:text-base">Fleet Overview</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Monitor vehicle status and performance</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {vehicles.map((vehicle) => (
                   <Card key={vehicle.id}>
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-lg">{vehicle.name}</CardTitle>
-                        <Badge variant={vehicle.status === "Active" ? "default" : "secondary"}>{vehicle.status}</Badge>
+                        <CardTitle className="text-base sm:text-lg">{vehicle.name}</CardTitle>
+                        <Badge variant={vehicle.status === "Active" ? "default" : "secondary"} className="text-xs">
+                          {vehicle.status}
+                        </Badge>
                       </div>
-                      <CardDescription>
+                      <CardDescription className="text-xs sm:text-sm">
                         {vehicle.type} • {vehicle.capacity}
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-xs sm:text-sm">
                           <span>Fuel Level</span>
                           <span>{vehicle.fuelLevel}%</span>
                         </div>
                         <Progress value={vehicle.fuelLevel} className="h-2" />
                       </div>
                       <div className="space-y-1">
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-xs sm:text-sm">
                           <span>Location:</span>
                           <span>{vehicle.location}</span>
                         </div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-xs sm:text-sm">
                           <span>Driver:</span>
                           <span>{vehicle.driver}</span>
                         </div>
-                        <div className="flex justify-between text-sm">
+                        <div className="flex justify-between text-xs sm:text-sm">
                           <span>Maintenance:</span>
                           <Badge
                             variant={vehicle.maintenance === "Good" ? "outline" : "destructive"}
@@ -614,19 +649,19 @@ export function RouteOptimizationPage() {
                         <Button
                           variant="outline"
                           size="sm"
-                          className="flex-1 bg-transparent"
+                          className="flex-1 bg-transparent text-xs"
                           onClick={() => handleTrackVehicle(vehicle.id)}
                         >
-                          <MapPin className="h-4 w-4 mr-1" />
+                          <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                           Track
                         </Button>
                         <Button
                           variant="outline"
                           size="sm"
-                          className="flex-1 bg-transparent"
+                          className="flex-1 bg-transparent text-xs"
                           onClick={() => handleManageVehicle(vehicle.id)}
                         >
-                          <Settings className="h-4 w-4 mr-1" />
+                          <Settings className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                           Manage
                         </Button>
                       </div>
@@ -636,80 +671,6 @@ export function RouteOptimizationPage() {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
-
-        <TabsContent value="analytics" className="space-y-4">
-          <div className="grid gap-4 lg:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Route Efficiency Trends</CardTitle>
-                <CardDescription>Performance metrics over time</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4 text-center">
-                    <div className="p-4 border rounded-lg">
-                      <div className="text-2xl font-bold text-chart-2">23%</div>
-                      <div className="text-sm text-muted-foreground">Time Reduction</div>
-                    </div>
-                    <div className="p-4 border rounded-lg">
-                      <div className="text-2xl font-bold text-chart-3">18%</div>
-                      <div className="text-sm text-muted-foreground">Fuel Savings</div>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span>Average Route Completion</span>
-                      <span>94%</span>
-                    </div>
-                    <Progress value={94} className="h-2" />
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span>On-Time Performance</span>
-                      <span>87%</span>
-                    </div>
-                    <Progress value={87} className="h-2" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Cost Analysis</CardTitle>
-                <CardDescription>Financial impact of optimization</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4 text-center">
-                    <div className="p-4 border rounded-lg">
-                      <div className="text-2xl font-bold text-primary">₹45,200</div>
-                      <div className="text-sm text-muted-foreground">Monthly Savings</div>
-                    </div>
-                    <div className="p-4 border rounded-lg">
-                      <div className="text-2xl font-bold text-chart-2">₹5,42,400</div>
-                      <div className="text-sm text-muted-foreground">Annual Projection</div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-sm">Fuel Cost Reduction</span>
-                      <span className="text-sm font-medium">₹18,500</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm">Maintenance Savings</span>
-                      <span className="text-sm font-medium">₹12,300</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm">Labor Efficiency</span>
-                      <span className="text-sm font-medium">₹14,400</span>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </TabsContent>
       </Tabs>
     </div>
